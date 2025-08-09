@@ -1,13 +1,13 @@
-import React from 'react'
-import Navbar from './Navbar'
+// import React from 'react'
+// import Navbar from './Navbar'
 
-const AppLayout = () => {
-  return (
-    <>
-     <Navbar/>
-     <outlet/> 
-    </>
-  )
-}
+// const AppLayout = () => {
+//   return (
+//     <>
+//      <Navbar/>
+//      <outlet/> 
+//     </>
+//   )
+// }
 
-export default AppLayout
+// export default AppLayout
