@@ -9,7 +9,7 @@ const Category = () => {
 
     const cards = category.map(card => {
         return (
-            <div className='flex-1 ]'>
+            <div className='flex-1  ' key={card.id}>
                 <div className=' w-full min-h-[20vh] relative'>
                     <img src={card.image} alt="" className='absolute -bottom-10' />
                 </div>
@@ -27,7 +27,7 @@ const Category = () => {
             <div className=" max-w-[1400px] mx-auto px-10  py-20">
                 <Title highLight="Shop" normal="By Category" />
 
-                <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-10 md:mt-15 mt-10 '>
+                <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-10 md:mt-30 mt-10 '>
                     {cards}
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaHeart } from "react-icons/fa6";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
@@ -8,12 +8,21 @@ import { BiMenuAltRight } from "react-icons/bi";
 
 const Navbar = () => {
     const [showMenu, setShowMenu] = useState(false);
+    const [isScroll, setIsScroll] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScroll(window.scrollY > 10);
+        }
+
+        window.addEventListener("scroll", handleScroll);
+    }, []);
     const toggleMenu = () => {
         setShowMenu(!showMenu);
     }
     return (
-        <header className='fixed top-0 right-0 left-0 z-50' >
-            <nav className=' bg-white max-w-[1400px] mx-auto px-10 md:h-[12vh] h-[10vh] items-center flex justify-between'>
+        <header className={`${isScroll && "shadow-lg"} fixed top-0 right-0 left-0 z-50`} >
+            <nav className=' bg-white max-w-[1400px] mx-auto px-10 md:h-[12vh] h-[10vh] items-center flex justify-between '>
                 <a href="#" className='text-2xl font-bold'><span className='text-[#98CD00]'>T</span>aza<span className='text-[#98CD00]' >G</span>ro</a>
 
                 {/* desktop menu */}
@@ -48,7 +57,7 @@ const Navbar = () => {
 
 
                 {/* mobile menu */}
-                <ul className={`flex flex-col gap-y-12 bg-[#98CD00]/40 backdrop-blur-xl p-10 items-center gap-x-15 md:hidden rounded-xl absolute top-30 -left-full transform -translate-x-1/2 transition-all duration-500 ${showMenu && "left-1/2"} `}>
+                <ul className={`flex flex-col gap-y-12 bg-[#98CD00]/40 backdrop-blur-xl p-10 items-center shadow-xl gap-x-15 md:hidden rounded-xl absolute top-30 -left-full transform -translate-x-1/2 transition-all duration-500 ${showMenu && "left-1/2"} `}>
                     <li><a href="#" className='font-semibold tracking-wider ' >Home</a></li>
                     <li><a href="#" className='font-semibold tracking-wider  ' >About</a></li>
                     <li><a href="#" className='font-semibold tracking-wider ' >Contact</a></li>
