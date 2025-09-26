@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
 import Title from './Title'
-import strawberry from "../assets/strawberry.png"
-
+import products from "./products"
+import Cards from './Cards';
 const OurProducts = () => {
     const tabs = ["All", "Fruits", "Vagetables", "Dairy", "SeaFood"];
     const [active, setActive] = useState("All");
+
+    const mapCards = products.map((product, index) => {
+        return (
+            <Cards key={index} image={product.image} name={product.name}  price={product.price} />)
+    })
+
     return (
         <div className='max-w-[1400px] mx-auto px-10 py-20' >
             <Title highLight={"Our"} normal={"Products"} />
@@ -18,6 +24,11 @@ const OurProducts = () => {
                     )
                 })}
             </div>
+
+            <div className='grid grid-cols-4 gap-9 mt-20'>
+                {mapCards}
+            </div>
+
         </div>
     )
 }
@@ -25,12 +36,3 @@ const OurProducts = () => {
 export default OurProducts
 
 
-
-const products = [
-    {
-        id: 1,
-        name: "strawbery",
-        price: 3.00,
-        image: strawberry
-    },
-]
